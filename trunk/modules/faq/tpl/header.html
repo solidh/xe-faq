@@ -1,0 +1,29 @@
+<!--%import("js/faq_admin.js")-->
+<!--%import("css/layout_admin.css")-->
+
+<h3 class="xeAdmin"><span class="gray">{$lang->faq_management}</span></h3>
+
+<div class="infoText">{nl2br($lang->about_faq)}</div>
+
+<!--@if($module_info)-->
+<div class="header4">
+    <!--@if($module_info->mid)-->
+    <h4 class="xeAdmin">{$module_info->mid} <!--@if($module_info->is_default=='Y')--><span class="bracket">({$lang->is_default})</span><!--@end--> <span class="vr">|</span> <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" onclick="window.open(this.href); return false;" class="view">View</a></h4>
+    <!--@end-->
+
+    <ul class="localNavigation">
+        <!--@if($module=='admin')-->
+        <li <!--@if($act=='dispFaqAdminContent')-->class="on"<!--@end-->><a href="{getUrl('act','dispFaqAdminContent','module_srl','')}">{$lang->cmd_faq_list}</a></li>
+        <!--@else-->
+        <li><a href="{getUrl('act','')}">{$lang->cmd_back}</a></li>
+        <!--@end-->
+        <li <!--@if($act=='dispFaqAdminFaqInfo'||$act=='dispFaqAdminInsertFaq')-->class="on"<!--@end-->><a href="{getUrl('act','dispFaqAdminFaqInfo')}"><!--@if($module_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_faq}<!--@end--></a></li>
+
+        <!--@if($module_srl)-->
+        <li <!--@if($act=='dispFaqAdminCategoryInfo')-->class="on"<!--@end-->><a href="{getUrl('act','dispFaqAdminCategoryInfo')}">{$lang->cmd_manage_category}</a></li>
+        <li <!--@if($act=='dispFaqAdminFaqAdditionSetup')-->class="on"<!--@end-->><a href="{getUrl('act','dispFaqAdminFaqAdditionSetup')}">{$lang->cmd_addition_setup}</a></li>
+		<!--@end-->
+    </ul>
+</div>
+<!--@end-->
+

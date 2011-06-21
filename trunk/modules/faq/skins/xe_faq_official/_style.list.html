@@ -1,0 +1,58 @@
+﻿<!--%import("css/faq.css")-->
+<div class="faq_cont">
+<div class="tab_list m1">
+<!--@if($module_info->use_category=="Y")-->
+	<ul>
+		<li <!--@if(!Context::get('category'))-->class="m1"<!--@else-->class="m2"<!--@end-->><a href="{getUrl('','mid',$mid)}"><span>All Categories</span></a></li>
+		<!--@foreach($category_list as $val)-->
+			<li <!--@if($val->category_srl == Context::get('category'))--> class="m1" <!--@else-->class="m2"<!--@end-->><a href="{getUrl('','mid',$mid,'category',$val->category_srl)}"><span>{$val->title}</span></a></li>
+		<!--@endforeach-->
+		<li class="t_num">Total<em>{$total_count}</em></li>
+	</ul>
+<!--@end-->
+</div>
+
+<ul class="faq_lst">
+	<!--@foreach($question_list as $question_index => $question)-->
+		<li id="q_li_link_{$question_index}" class="on"><a id="qlink_{$question_index}" href="#q_a_link_{$question_index}" class="title">{$question->getQuestion()}</a><a id="q_a_link_{$question_index}"href="#q_a_link_{$question_index}" class="btn_show"><img class="click_img" src="img/btn_d.gif" width="14" height="7" alt=""></a>
+			<div id="qAnswer_{$question_index}" class="a_cont" style="display:none">
+				{$question->getAnswer()}
+				<!--@if($oQuestion->isEditable())-->
+					<p class="btn_del_mod">
+						<a href="{getUrl('act','dispFaqWrite','question_srl',$question->question_srl)}" class="button"><span>{$lang->cmd_modify}</span></a>
+						<a href="{getUrl('act','dispFaqDelete','question_srl',$question->question_srl)}" class="button"><span>{$lang->cmd_delete}</span></a>
+					</p>
+				<!--@end-->
+			</div>	
+		</li>
+	<!--@end-->
+</ul>
+
+</div>
+
+<script type="text/javascript">
+	jQuery(function($){
+		$('ul.faq_lst').find('li').each(function(index){
+			$(this).click(function(){
+				$(this).find('a').blur();
+				if($(this).find('.a_cont').css('display') == 'none')
+					$(this).find('.a_cont').show();
+				else
+				    $(this).find('.a_cont').hide();
+
+				$imgsrc = $(this).find('.click_img').attr('src');
+				if($imgsrc.indexOf("btn_d")>0){
+					$imgsrc = $imgsrc.replace("btn_d","btn_u");
+					$(this).find('.click_img').attr('src',$imgsrc);
+				}
+				else if($imgsrc.indexOf("btn_u")>0){
+					$imgsrc = $imgsrc.replace("btn_u","btn_d");
+					$(this).find('.click_img').attr('src',$imgsrc);
+				}
+			});
+
+		});
+
+	});
+
+</script>
