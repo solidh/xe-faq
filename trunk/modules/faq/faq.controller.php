@@ -107,9 +107,6 @@ class faqController extends faq {
 		unset($obj->_saved_doc_answer);
 		unset($obj->_saved_doc_message);
 
-		// call trigger (before)
-		$output = ModuleHandler::triggerCall('faq.insertQuestion', 'before', $obj);
-		if(!$output->toBool()) return $output;
 
 		// create a question_srl
 		if(!$obj->question_srl) $obj->question_srl = getNextSequence();
@@ -163,14 +160,6 @@ class faqController extends faq {
 		// update category count
 		if($obj->category_srl) $this->updateCategoryCount($obj->module_srl, $obj->category_srl);
 
-		// call trigger (after)
-		if($output->toBool()) {
-			$trigger_output = ModuleHandler::triggerCall('faq.insertQuestion', 'after', $obj);
-			if(!$trigger_output->toBool()) {
-				$oDB->rollback();
-				return $trigger_output;
-			}
-		}
 
 		// DB commit
 		$oDB->commit();
@@ -188,10 +177,6 @@ class faqController extends faq {
 	function updateQuestion($source_obj, $obj) {
 
 		if(!$source_obj->question_srl || !$obj->question_srl) return new Object(-1,'msg_invalied_request');
-
-		// call trigger (before)
-		$output = ModuleHandler::triggerCall('faq.updateQuestion', 'before', $obj);
-		if(!$output->toBool()) return $output;
 
 		// begin transaction
 		$oDB = &DB::getInstance();
@@ -253,14 +238,6 @@ class faqController extends faq {
 			if($obj->category_srl) $this->updateCategoryCount($obj->module_srl, $obj->category_srl);
 		}
 
-		// call trigger (after)
-		if($output->toBool()) {
-			$trigger_output = ModuleHandler::triggerCall('faq.updateQuestion', 'after', $obj);
-			if(!$trigger_output->toBool()) {
-				$oDB->rollback();
-				return $trigger_output;
-			}
-		}
 
 		// DB commit
 		$oDB->commit();
@@ -279,10 +256,7 @@ class faqController extends faq {
 	 * @brief delete question
 	 **/
 	function deleteQuestion($question_srl, $is_admin = false) {
-		// call trigger (before)
-		$trigger_obj->question_srl = $question_srl;
-		$output = ModuleHandler::triggerCall('faq.deleteQuestion', 'before', $trigger_obj);
-		if(!$output->toBool()) return $output;
+
 
 		// begin transaction
 		$oDB = &DB::getInstance();
@@ -305,14 +279,6 @@ class faqController extends faq {
 		// update category count when the question has beeen deleted
 		if($oQuestion->get('category_srl')) $this->updateCategoryCount($oQuestion->get('module_srl'),$oQuestion->get('category_srl'));
 
-		// call trigger (after)
-		if($output->toBool()) {
-			$trigger_output = ModuleHandler::triggerCall('faq.deleteQuestion', 'after', $trigger_obj);
-			if(!$trigger_output->toBool()) {
-				$oDB->rollback();
-				return $trigger_output;
-			}
-		}
 
 		// remove thumbnail
 		FileHandler::removeDir(sprintf('files/cache/thumbnails/%s',getNumberingPath($question_srl, 3)));

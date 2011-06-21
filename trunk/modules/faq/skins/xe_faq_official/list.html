@@ -1,9 +1,4 @@
 <!--#include("_header.html")-->
-<!--@if($oQuestion->isExists() && $module_info->default_style != 'blog')-->
-<div class="viewDocument">
-    <!--#include("./view_document.html")-->
-</div>
-<!--@end-->
 <div id="search">
 	<form action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="fo_search" class="search_box">
 	<!--@if($vid)-->
@@ -12,7 +7,7 @@
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="category" value="{$category}" />
 		<input id="searchkey" type="text"  name="search_keyword" value="{htmlspecialchars($search_keyword)}" class="inputText" accesskey="S" title="{$lang->cmd_search}">
-		<button type="submit" onclick="xGetElementById('fo_search').submit();return false;" class="btn_search">{$lang->cmd_search}</button>
+		<button type="submit" class="btn_search">{$lang->cmd_search}</button>
 	</form>
 <!--@if($module_info->allow_keywords == 'Y')-->
 	<div class="notice">

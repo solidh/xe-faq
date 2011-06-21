@@ -1,0 +1,132 @@
+.faq{
+    margin: 50px 0 60px 0;
+
+}
+
+.help_search {
+    background: url("../img/bg_help_search.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 76px;
+
+    padding: 15px 0 0 0;
+    width: 680px;
+}
+
+.help_search .search {
+    height: 27px;
+    overflow: hidden;
+    width: 680px;
+}
+
+#searchkey {
+	margin-left: 10px;
+	width: 300px;
+
+}
+
+.help_search .recom_word dd a {
+    color: #B6B6B3;
+}
+
+.help_search .recom_word dd {
+    float: left;
+    line-height: 14px;
+    margin-right: 0px;
+    padding: 0 0 0 0px;
+}
+
+.help_search .recom_word {
+    clear: both;
+}
+
+.faqWrite .boardWriteHeader dl * {
+    vertical-align: middle;
+}
+
+.board label {
+    cursor: pointer;
+}
+.boardWrite * {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+	width: 680px;
+}
+
+
+.faq_area{
+	border-collapse: collapse;
+	border-bottom: 0px dotted #666666;
+	margin-bottom: 10px;
+}
+
+
+.select,.ans_view, .buttonRight2 {
+    background: none repeat scroll 0 0 #F7F8FD;
+}
+
+.select .ico_q {
+    padding: 8px 0 0 18px;
+}
+.ico_a {
+	vertical-align: top;
+	
+
+    padding: 10px 0 0 18px;
+}
+
+.ans_view {
+    color: #666666;
+    height: 100%;
+    padding: 0;
+    position: relative;
+}
+
+
+.buttonRight2 {
+	text-align: right;
+
+}	
+
+.boardNavigation {
+	width:650px;
+	text-align: center;
+	margin-top:10px;
+}
+
+.pagination.a1 a.prevEnd {
+    background: url("../img/arrowPrevEndA1.gif") no-repeat scroll left center #FFFFFF;
+    padding-left: 15px;
+}
+
+.pagination.a1 a.nextEnd {
+    background: url("../img/arrowNextEndA1.gif") no-repeat scroll right center #FFFFFF;
+    padding-right: 15px;
+}
+
+.pagination a, .pagination strong {
+    color: #333333;
+    display: inline-block;
+    font-family: Tahoma,Sans-serif;
+    line-height: normal;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.pagination strong {
+    color: #FF6600 !important;
+}
+
+.pagination.a1 a, .pagination.a1 strong {
+    background: none repeat scroll 0 0 #FFFFFF;
+    /*border-color: -moz-use-text-color #DDDDDD -moz-use-text-color #CCCCCC;
+    border-style: none solid;
+    border-width: medium 1px;*/
+    font-size: 12px;
+    margin: 0 -4px;
+    padding: 1px 10px 1px 8px;
+}

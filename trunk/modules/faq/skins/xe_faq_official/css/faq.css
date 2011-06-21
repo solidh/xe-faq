@@ -57,6 +57,11 @@ a:focus{text-decoration:none!important}
 .faq_lst .a_cont p{margin:0 0 20px;padding:0;font-size:12px;font-weight:normal}
 .faq_lst .a_cont .btn_del_mod{overflow:hidden;padding:0;text-align:right}
 .faq_lst .a_cont .btn_del_mod a{padding:0}
+.faq_cont .faq_lst li.on .btn_show{ background: url(../img/btn_u.gif) no-repeat 50% 50%;}
+.faq_cont .faq_lst li.off .btn_show{ background: url(../img/btn_d.gif) no-repeat 50% 50%;}
+
+
+
 /* top10 */
 .faq_top10{margin:10px 0 0}
 .faq_top10 .tit{height:29px;background:url(../img/top10_tit_bg.gif) no-repeat}
