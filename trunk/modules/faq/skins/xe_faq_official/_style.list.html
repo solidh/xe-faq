@@ -1,4 +1,5 @@
 ﻿<!--%import("css/faq.css")-->
+<!--%import("js/skin.js")-->
 <div class="faq_cont">
 <div class="tab_list m1">
 <!--@if($module_info->use_category=="Y")-->
@@ -30,17 +31,4 @@
 
 </div>
 
-<script type="text/javascript">
-	jQuery(function($){
-		$('ul.faq_lst').find('li').each(function(index){
-			$(this).find('.btn_show,.title').click(function(){
-				$(this).parent().find('a').blur();
-				if($(this).parent().attr('class') == 'on')
-					$(this).parent().attr('class','off');
-				else
-				    $(this).parent().attr('class','on');
-				return false;
-			});
-		});
-	});
-</script>
+
