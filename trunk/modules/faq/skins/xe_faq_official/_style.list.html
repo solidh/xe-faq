@@ -15,7 +15,7 @@
 
 <ul class="faq_lst">
 	<!--@foreach($question_list as $question_index => $question)-->
-		<li id="q_li_link_{$question_index}" class="off"><a id="qlink_{$question_index}" href="#q_a_link_{$question_index}" class="title">{$question->getQuestion()}</a><a id="q_a_link_{$question_index}"href="#q_a_link_{$question_index}" class="btn_show"></a>
+		<li id="q_li_link_{$question_index}" class="on"><a id="qlink_{$question_index}" href="#q_a_link_{$question_index}" class="title">{$question->getQuestion()}</a><a id="q_a_link_{$question_index}"href="#q_a_link_{$question_index}" class="btn_show"></a>
 			<div id="qAnswer_{$question_index}" class="a_cont" >
 				{$question->getAnswer()}
 				<!--@if($oQuestion->isEditable())-->

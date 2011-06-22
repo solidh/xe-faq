@@ -1,5 +1,6 @@
 jQuery(function($){
 	$('ul.faq_lst').find('li').each(function(index){
+		$(this).attr('class','off')
 		$(this).find('.btn_show,.title').click(function(){
 			$(this).parent().find('a').blur();
 			if($(this).parent().attr('class') == 'on')
