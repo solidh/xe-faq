@@ -1,4 +1,9 @@
 <!--%import("css/faq.css")-->
 <div class="faqTitle">
 	<h2>FAQ</h2><p>Frequently Asked Questions</p>
+	<!--@if($is_logged)-->
+		<!--@if($logged_info->is_admin == 'Y')-->
+			<a class="setup" href="{getUrl('act','dispFaqAdminFaqInfo')}">{$lang->cmd_setup}</a>
+		<!--@end-->
+	<!--@end-->
 </div>

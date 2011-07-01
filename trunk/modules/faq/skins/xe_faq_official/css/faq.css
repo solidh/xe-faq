@@ -9,8 +9,19 @@ a:active,
 a:focus{text-decoration:none!important}
 /* faqTitle */
 .faqTitle{overflow:hidden;margin:34px 0 12px;padding-left:10px;*zoom:1}
-.faqTitle h2{float:left;margin:0 10px 0 0;color:#3a3a3a;font-size:18px}
+.faqTitle h2{float:left;margin:0 10px 0 0;color:#3a3a3a;font-size:18px;}
 .faqTitle p{float:left;margin:5px 0 0;padding:0;color:#9a9a9a}
+.faqTitle a{
+	float: right;
+	margin-right: 20px;
+	background: url("../img/iconSetup.gif") no-repeat scroll left transparent;
+	padding-left: 14px;
+	color: #666666;
+    text-decoration: none;
+    white-space: nowrap;
+	margin-top: 6px;
+
+}
 #search{margin-bottom:20px;padding:20px 0 0;border:1px solid #4e4e4e;background:#6e6f6f}
 #search .search_box{overflow:hidden;padding:0 0 19px 69px;background:url(../img/ico_search.gif) no-repeat 33px 6px;zoom:1}
 #search .inputText{float:left;width:551px;height:25px;margin-right:4px;padding-left:8px;border:1px solid #525252;background:#fff;color:#797979;font-size:12px;line-height:25px}
