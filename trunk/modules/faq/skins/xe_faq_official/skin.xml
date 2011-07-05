@@ -4,15 +4,15 @@
     <title xml:lang="zh-CN">XE_Faq Official Skin</title>
 	<title xml:lang="en">XE_Faq Official Skin</title>
     <description xml:lang="ko">
-        XE Faq Official Skin
+        전체적으로 그레이를 사용해 모던한 스타일이지만 그리드를 이용하여 명확한 레이아웃을 디자인.
         NHN (developers@xpressengine.com)
     </description>
     <description xml:lang="zh-CN">
-        XE Faq Official Skin
+        皮肤整体色调以灰色为主，显示出沉稳大方，以便适应于不同的模板风格。采用分类标签的布局形式，方便用户方查找、咨询。
         NHN (developers@xpressengine.com)
     </description>
     <description xml:lang="en">
-        XE Faq Official Skin
+        The skin utilizes grey as the basic color, employs a concise tag layout style, make users easy to seach FAQs.  
         NHN (developers@xpressengine.com)
     </description>
     <version>0.1</version>
