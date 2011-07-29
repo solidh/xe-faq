@@ -86,7 +86,7 @@
          * @brief display insert faq admin page
          **/
         function dispFaqAdminInsertFaq() {
-			if(!in_array($this->module_info->module, array('admin','faq','blog','guestbook'))) {
+			if(!in_array($this->module_info->module, array('admin','faq'))) {
                 return $this->alertMessage('msg_invalid_request');
             }
 
