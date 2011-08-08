@@ -1,57 +1,45 @@
 <?php
     /**
-     * @file   en.lang.php
+     * @file   ko.lang.php
      * @author developer (developer@nhn.com)
      * @brief faq modules's basic language pack
      **/
 
     $lang->faq = 'FAQ';
 
-	$lang->faq_management = 'FAQ Management';
-	$lang->about_faq = 'This module is for creating and managing FAQs.';
+	$lang->faq_management = 'FAQ 관리';
+	$lang->about_faq = 'FAQ페이지를 생성하고 관리하는 모듈입니다.';
 
-	$lang->cmd_faq_list = 'FAQs List';
-    $lang->cmd_view_info = 'FAQs Info';
-	$lang->cmd_create_faq = 'Create a new FAQ';
-	$lang->order_target = 'Sorting Target';
+	$lang->cmd_faq_list = 'FAQ 리스트';
+    $lang->cmd_view_info = 'FAQ 정보';
+	$lang->cmd_create_faq = 'FAQ 생성';
+	$lang->order_target = '정렬';
 	$lang->question_srl = 'Question No.';
-	$lang->order_asc = 'Ascending order';
-	$lang->order_desc = 'Descending order';
-	$lang->list_count = 'Question Count';
-	$lang->about_list_count = 'You can set the number of limit to show question in a page (default is 20).';
-	$lang->search_list_count = 'Search Question Count';
-	$lang->about_search_list_count = 'You may set the number of questions to be exposed when you use search or category function (default is 20).';
-	$lang->about_page_count = 'You can set the number of page link to move pages in a bottom of page (default is 10).';
-	$lang->about_description = 'It is the description for this FAQ module';
-	$lang->allow_feedback = 'Allow Feedback';
-	$lang->about_allow_feedback = 'Users will be able to write feedback for each of questions.';
-	$lang->allow_search = 'Allow Search';
-	$lang->about_allow_search = 'Users will be able to use search function in the FAQ page.';
-	$lang->allow_email = 'Allow Email';
-	$lang->about_allow_email = 'Users will be able to send an email to the admin user.';
-	$lang->allow_keywords = 'Allow Keywords';
-	$lang->about_allow_keywords = 'Users will be able to use recommended keywords in search function.';
-	$lang->faq_keywords = 'Keywords';
-	$lang->about_faq_keywords = 'Set keywords of the module, multiple keywords are separated by comma(,).';
+	$lang->order_asc = '오름차순';
+	$lang->order_desc = '내림차순';
+	$lang->list_count = 'FAQ 수';
+	$lang->about_list_count = '한 페이지에서 최대 표시되는 FAQ 수를 설정합니다.(기본20개)';
+	$lang->search_list_count = 'FAQ 검색 결과 수';
+	$lang->about_search_list_count = '한 페이지에 대한 검색 결과 수를 설정합니다.(기본20개)-예:검색결과가100개이면 5페이지에 걸쳐서 보여집니다.';
+	$lang->about_page_count = '페이징에 대한 값을 설정합니다.(기본 10페이지).';
+	$lang->about_description = 'FAQ페이지 설명';
+	$lang->allow_keywords = '키워드 사용여부';
+	$lang->about_allow_keywords = '키워드 사용으로 설정할 경우사용자에게 키워드 검색을 제공합니다.';
+	$lang->faq_keywords = '키워드';
+	$lang->about_faq_keywords = '콤마(,)를 이용해 여러개의 키워드를 입력하실 수 있습니다.';
 
-	$lang->all_categories = 'ALL Categories';
-	$lang->question_title = 'Question';
+	$lang->all_categories = '분류 전체';
+	$lang->question_title = '질문';
+	$lang->answer_title = '답';
+	$lang->category = "FAQ 분류";
+	$lang->category_question_count = '분류 질문 수';
 
-	$lang->answer_title = 'Answer';
-	$lang->category = "FAQ Category";
-    $lang->category_color = 'Category Font Color';
-	$lang->about_category_color = "You can set font color of category.";
-    $lang->category_group_srls = 'Accessable Group';
-    $lang->about_category_group_srls = 'Only selected group will be able to use current category.';
-	$lang->category_question_count = 'Question Count';
-	$lang->parent_category_title = 'Parent Category';
-
-	$lang->question_count = 'Question Count';
-	$lang->faq_categories = 'FAQ Categories';
-	$lang->faq_category = 'FAQ Category';
-	$lang->total_category_result = 'Total <strong>%d</strong> FAQ categories are used.';
-	$lang->question_number = 'Number of Questions';
-	$lang->category_name = 'Category';
-	$lang->cmd_create = 'Create';
-	$lang->none_categoriess = 'There is no FAQ categories.';
+	$lang->question_count = '질문 수';
+	$lang->faq_categories = 'FAQ 분류';
+	$lang->faq_category = 'FAQ 분류';
+	$lang->total_category_result = '<strong>%d</strong> 의FAQ 분류가 사용됨';
+	$lang->question_number = '질문 수';
+	$lang->category_name = '분류명';
+	$lang->cmd_create = '생성';
+	$lang->none_categoriess = '생성된 FAQ 분류가 없습니다.';
 ?>
