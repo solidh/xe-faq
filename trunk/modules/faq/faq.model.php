@@ -5,7 +5,7 @@
      * @brief  faq module Model class
      **/
 
-    class faqModel extends module {
+    class faqModel extends faq {
 
 		/**
 		 * @brief initialization
