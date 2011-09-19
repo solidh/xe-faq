@@ -78,6 +78,92 @@
             return $node;
         }
 
+		/**
+		 * @brief get category HTML which shown in category admin page
+		 **/
+		function getCategoryHTML($module_srl) {
+
+			$category_xml_file = $this->getCategoryXmlFile($module_srl);
+
+			Context::set('category_xml_file', $category_xml_file);
+
+			Context::loadJavascriptPlugin('ui.tree');
+
+			$oTemplate = &TemplateHandler::getInstance();
+			return $oTemplate->compile($this->module_path.'tpl', 'category_admin');
+		}
+
+		/**
+		 * @brief get cached category xml file, then return
+		 **/
+		function getCategoryXmlFile($module_srl) {
+			$xml_file = sprintf('files/cache/faq_category/%s.xml.php',$module_srl);
+			if(!file_exists($xml_file)) {
+				$oFaqController = &getController('faq');
+				$oFaqController->makeCategoryFile($module_srl);
+			}
+			return $xml_file;
+		}
+
+		/**
+		 * @brief get Faq category template information
+		 **/
+        function getFaqCategoryTplInfo() {
+            $oModuleModel = &getModel('module');
+            $oMemberModel = &getModel('member');
+
+            // get module information
+            $module_srl = Context::get('module_srl');
+            $module_info = $oModuleModel->getModuleInfoByModuleSrl($module_srl);
+
+            // get user permission
+            $grant = $oModuleModel->getGrant($module_info, Context::get('logged_info'));
+            if(!$grant->manager) return new Object(-1,'msg_not_permitted');
+
+            $category_srl = Context::get('category_srl');
+            $parent_srl = Context::get('parent_srl');
+
+            // get user member group
+            $group_list = $oMemberModel->getGroups($module_info->site_srl);
+            Context::set('group_list', $group_list);
+
+            // if parent_srl is exists, category_srl not exists
+            if(!$category_srl && $parent_srl) {
+                // get parent categry information
+                $parent_info = $this->getCategory($parent_srl);
+
+                // create a new category_srl
+                $category_info->category_srl = getNextSequence();
+                $category_info->parent_srl = $parent_srl;
+                $category_info->parent_category_title = $parent_info->title;
+
+            // add categroy list, or update category list
+            } else {
+                // if category_srl exists (update) 
+                if($category_srl) $category_info = $this->getCategory($category_srl);
+
+                // if category_srl not exists (add)
+                if(!$category_info->category_srl) {
+                    $category_info->category_srl = getNextSequence();
+                }
+            }
+
+
+            $category_info->title = htmlspecialchars($category_info->title);
+            Context::set('category_info', $category_info);
+
+            // compile category template
+            $oTemplate = &TemplateHandler::getInstance();
+            $tpl = $oTemplate->compile('./modules/faq/tpl', 'category_info');
+            $tpl = str_replace("\n",'',$tpl);
+
+            // set user language
+            $oModuleController = &getController('module');
+            $oModuleController->replaceDefinedLangCode($tpl);
+
+            // add template
+            $this->add('tpl', $tpl);
+        }
 
         /**
          * @brief get category child count
@@ -93,14 +179,73 @@
          * @brief get category list from cached file
          **/
         function getCategoryList($module_srl) {
-			$args->module_srl = $module_srl;
-            $output = executeQueryArray('faq.getCategoryList',$args);
-			if($output->data->count > 0) 
-				$faq_category = null;
-			else
-				$faq_category = $output->data;
-			
+            // find cached php file under cached category folder
+            $filename = sprintf("./files/cache/faq_category/%s.php", $module_srl);
+
+            // if file not exists, then create a new file
+            if(!file_exists($filename)) {
+                $oFaqController = &getController('faq');
+                if(!$oFaqController->makeCategoryFile($module_srl)) return array();
+            }
+
+            @include($filename);
+
+            // arrange category
+            $faq_category = array();
+            $this->_arrangeCategory($faq_category, $menu->list, 0);
             return $faq_category;
+        }
+
+        /**
+         * @brief arrange category method
+         **/
+        function _arrangeCategory(&$faq_category, $list, $depth) {
+            if(!count($list)) return;
+            $idx = 0;
+            $list_order = array();
+            foreach($list as $key => $val) {
+                $obj = null;
+                $obj->mid = $val['mid'];
+                $obj->module_srl = $val['module_srl'];
+                $obj->category_srl = $val['category_srl'];
+                $obj->parent_srl = $val['parent_srl'];
+                $obj->title = $obj->text = $val['text'];
+                $obj->color = $val['color'];
+                $obj->question_count = $val['question_count'];
+                $obj->depth = $depth;
+                $obj->child_count = 0;
+                $obj->childs = array();
+                $obj->grant = $val['grant'];
+
+                if(Context::get('mid') == $obj->mid && Context::get('category') == $obj->category_srl) $selected = true;
+                else $selected = false;
+
+                $obj->selected = $selected;
+
+                $list_order[$idx++] = $obj->category_srl;
+
+                // if there is a parent category
+                if($obj->parent_srl) {
+
+                    $parent_srl = $obj->parent_srl;
+                    $question_count = $obj->question_count;
+
+                    while($parent_srl) {
+						// parent category question count add 1
+                        $faq_category[$parent_srl]->question_count += $question_count;
+                        $faq_category[$parent_srl]->childs[] = $obj->category_srl;
+                        $faq_category[$parent_srl]->child_count = count($faq_category[$parent_srl]->childs);
+
+                        $parent_srl = $faq_category[$parent_srl]->parent_srl;
+                    }
+                }
+
+                $faq_category[$key] = $obj;
+
+                if(count($val['list'])) $this->_arrangeCategory($faq_category, $val['list'], $depth+1);
+            }
+            $faq_category[$list_order[0]]->first = true;
+            $faq_category[$list_order[count($list_order)-1]]->last = true;
         }
 
         /**

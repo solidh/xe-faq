@@ -117,7 +117,7 @@ function deleteCategory(obj){
 	params['category_srl'] = category_srl;
 
 	var response_tags = new Array('error','message','page','mid');
-	exec_xml('faq', 'procFaqDeleteCategory', params, completeDeleteCategory, response_tags);
+	exec_xml('textyle', 'procFaqDeleteCategory', params, completeDeleteCategory, response_tags);
 }
 
 function completeDeleteCategory(ret_obj, response_tags, args, fo_obj) {

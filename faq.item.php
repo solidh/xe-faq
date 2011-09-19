@@ -69,11 +69,9 @@
         function getEditor() {
             $module_srl = $this->get('module_srl');
             if(!$module_srl) $module_srl = Context::get('module_srl');
-			
-			// do not use auto_save 
-			$GLOBALS['__editor_module_config__'][$module_srl]->enable_autosave = 'N';
 
             $oEditorModel = &getModel('editor');
+
             return $oEditorModel->getModuleEditor('document', $module_srl, $this->question_srl, 'question_srl', 'answer');
         }
 

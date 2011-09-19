@@ -40,6 +40,8 @@
 
 			// load faq.js
 			Context::addJsFile($this->module_path.'tpl/js/faq.js');	
+
+
 		}
 
 
@@ -54,6 +56,7 @@
             // set search option
             foreach($this->search_option as $opt) $search_option[$opt] = Context::getLang($opt);	
             Context::set('search_option', $search_option);
+
 
 			$this->dispFaqContentView();
 
@@ -279,9 +282,7 @@
                 $oQuestion = $oFaqModel->getQuestion($question_srl);
             }
 
-            if($oQuestion){
-				if(!$oQuestion->isExists()) return $this->dispFaqContent();
-			}
+            if(!$oQuestion->isExists()) return $this->dispFaqContent();
 
             Context::set('oQuestion',$oQuestion);
 

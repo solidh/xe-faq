@@ -114,7 +114,12 @@
         * @brief display faq category admin page
         **/
         function dispFaqAdminCategoryInfo() {
+           /* $oFaqModel = &getModel('faq');
+            $catgegory_content = $oFaqModel->getCategoryHTML($this->module_info->module_srl);
+            Context::set('category_content', $catgegory_content);
 
+            Context::set('module_info', $this->module_info);
+            $this->setTemplateFile('category_list');*/
 			$module_srl = Context::get('module_srl');
 			$category_srl = Context::get('category_srl');
 			

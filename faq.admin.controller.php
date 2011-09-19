@@ -22,7 +22,7 @@
             $oModuleModel = &getModel('module');
 
             // get variables from admin page form
-            if(!$args) $args = Context::getRequestVars();
+            $args = Context::getRequestVars();
             $args->module = 'faq';
             $args->mid = $args->faq_name;
             unset($args->faq_name);

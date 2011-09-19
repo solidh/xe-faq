@@ -4,10 +4,7 @@
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="answer" value="{$oQuestion->getAnswerText()}" />
 	<input type="hidden" name="question_srl" value="{$question_srl}" />
-	
-	<!--@if(!$question_srl)-->
-		{@ Context::set('question_srl',NULL)}
-	<!--@end-->
+
 	<div class="Question">
 	
 			<label class="title">{$lang->question_title} :</label>
