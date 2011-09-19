@@ -1,0 +1,16 @@
+<filter name="delete_question" module="faq" act="procFaqDeleteQuestion">
+  <form>
+    <node target="question_srl" required="true" />
+  </form>
+  <parameter>
+    <param name="mid" target="mid" />
+    <param name="page" target="page" />
+    <param name="question_srl" target="question_srl" />
+  </parameter>
+  <response callback_func="completeDeleteQuestion">
+    <tag name="error" />
+    <tag name="message" />
+    <tag name="mid" />
+    <tag name="page" />
+  </response>
+</filter>
