@@ -1,0 +1,72 @@
+<!--#include("header.html")-->
+			<!-- Content -->
+			<div id="content">
+				
+				<!-- contentHeader -->
+				<div class="contentHeader categoryHeader">
+					<h3 class="h3">{$lang->faq_categories}</h3>
+				</div>
+				<!-- /contentHeader -->
+
+				<form method="post" class="categoryList" onsubmit="return false">
+
+					<p class="summary">{sprintf($lang->total_category_result, $category_list_count)}</p>
+				
+					<!-- Category Sum -->
+					<fieldset class="tSum">
+						<div class="tHeader">
+							<span class="aLeft"> <label class="tagSort">{$lang->faq_category} </label></span>
+							<span class="aRight"><label>{$lang->question_number}</label></span>
+						</div>
+						
+						<!--@if(!$faq_category_list)-->
+						<ul id="tag_list">
+							<li class="noTag"><span>{$lang->none_categoriess}</span></li>
+						</ul>
+						<!--@else-->
+						<ul id="tag_list">
+								<!--@foreach($faq_category_list as $k => $category)-->
+								<li<!--@if($category->title==$selected_category->title)--> class="hover"<!--@end-->><a href="{getUrl('category_srl',$category->category_srl)}" class="tWord">{$category->title}</a> <span class="sum">{$category->question_count}</span></li>
+								<!--@end-->
+						</ul>
+						<!--@end-->
+						
+					</fieldset>
+					<!-- /Category Sum -->
+					
+					<!-- Category Modify -->
+					<fieldset class="tModify">
+						<legend>{$lang->update_tag}</legend>
+						<dl class="tagName">
+							<dt>{$lang->category_name} :</dt>
+							<dd>
+							<input name="category_title" type="text" class="inputText" value="{$selected_category->title}" /> 
+							<input name="module_srl" type="hidden" value="{$module_info->module_srl}"/> 
+							<input name="category_srl" type="hidden" value="{$selected_category->category_srl}" /> 
+								<!--@if(!$selected_category)-->
+								<span class="buttonGray medium"><button type="button" onclick="createCategory(this)">{$lang->cmd_create}</button></span>
+								<!--@else-->
+								<span class="buttonGray medium"><button type="button" onclick="updateCategory(this)">{$lang->cmd_modify}</button></span>
+								<span class="buttonGray medium"><button type="button" onclick="deleteCategory(this)">{$lang->cmd_delete}</button></span>
+								<!--@end-->
+							</dd>
+						</dl>
+						<!--@if($with_used_tag_list)-->
+						<dl class="tagFamily">
+							<dt>{$lang->tag_with_tags}</dt>
+							<!--@foreach($with_used_tag_list as $k => $v)-->
+								<!--@if($v->tag != $selected_tag)-->
+									<dd><a href="{getUrl('selected_tag', $v->tag)}">{$v->tag}</a> ({$v->count})</dd>
+								<!--@end-->
+							<!--@end-->
+						</dl>
+						<!--@end-->
+					</fieldset>
+					<!-- /Category Modify -->
+					
+				</form>
+				
+			</div>
+			<hr />
+			<!-- /Content -->
+			
