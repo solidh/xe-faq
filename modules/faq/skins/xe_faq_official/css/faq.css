@@ -1,6 +1,6 @@
 /* Element Reset */
 html,
-body{height:100%;margin:0;background:url(../img/bg_head.gif) repeat-x;font-family:Arial,Tahoma,Sans-serif;font-size:12px}
+body{height:100%;margin:0;background:url(../img/bg_head.gif) repeat-x;font-family:Arial,Tahoma,Sans-serif;}
 fieldset{margin:0;padding:0;border:0}
 img{border:0}
 a{text-decoration:none}
