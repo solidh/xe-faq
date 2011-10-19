@@ -27,13 +27,13 @@
 
         <action name="getFaqCategoryTplInfo" type="model" standalone="true" />
 
-		<action name="procFaqAdminInsertFaq" type="controller" standalone="true" />
-        <action name="procFaqAdminDeleteFaq" type="controller" standalone="true" />
+		<action name="procFaqAdminInsertFaq" type="controller" standalone="true" ruleset="insertFaq"/>
+        <action name="procFaqAdminDeleteFaq" type="controller" standalone="true" ruleset="deleteFaq"/>
         <action name="procFaqInsertCategory" type="controller" standalone="true" />
         <action name="procFaqMoveCategory" type="controller" standalone="true" />
         <action name="procFaqDeleteCategory" type="controller" standalone="true" />
-        <action name="procFaqInsertQuestion" type="controller" />
-        <action name="procFaqDeleteQuestion" type="controller" />
+        <action name="procFaqInsertQuestion" type="controller" ruleset="insertQuestion"/>
+        <action name="procFaqDeleteQuestion" type="controller" ruleset="deleteQuestion"/>
 
     </actions>
 </module>
