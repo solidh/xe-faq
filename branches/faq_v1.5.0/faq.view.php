@@ -147,7 +147,7 @@
             $args->search_keyword = Context::get('search_keyword'); 
 
             // set up category args
-            if($this->module_info->use_category=='Y') $args->category_srl = Context::get('category'); ///< 카테고리 사용시 선택된 카테고리
+            if($this->module_info->use_category=='Y') $args->category_srl = intval(removeHackTag(Context::get('category'))); ///< 카테고리 사용시 선택된 카테고리
 
             // set up sorting args
             $args->sort_index = Context::get('sort_index');
