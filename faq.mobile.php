@@ -13,7 +13,7 @@ class faqMobile extends faqView {
              * get skin template_path
              * if it is not found, default skin is xe_faq
              **/
-            $template_path = sprintf("%sskins/%s/",$this->module_path, $this->module_info->mskin);
+            $template_path = sprintf("%sm.skins/%s/",$this->module_path, $this->module_info->mskin);
             if(!is_dir($template_path)||!$this->module_info->skin) {
                 $this->module_info->mskin = 'xe_faq';
                 $template_path = sprintf("%sm.skins/%s/",$this->module_path, $this->module_info->mskin);
