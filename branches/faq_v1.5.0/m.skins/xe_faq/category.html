@@ -1,0 +1,8 @@
+<include target="_header.html" />
+
+
+
+<block loop="$category_list => $val">
+	<li class="m1"|cond="$val->category_srl == Context::get('category')" class="m2"|cond="$val->category_srl != Context::get('category')"><a href="{getUrl('','mid',$mid,'category',$val->category_srl)}"><span>{$val->title}</span></a></li>
+</block>
+<include target="_footer.html">
