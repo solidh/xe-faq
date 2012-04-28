@@ -1,0 +1,11 @@
+<query id="updateQuestionNegative" action="update">
+    <tables>
+        <table name="faq_questions" />
+    </tables>
+    <columns>
+        <column name="negative" var="negative" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="question_srl" var="question_srl" notnull="notnull" />
+    </conditions>
+</query>
