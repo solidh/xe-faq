@@ -40,23 +40,29 @@ function voteFaq(question_srl,status){
 	params['question_srl'] = question_srl;
 	params['status'] = status;
 
-	var completeVote = function(){
-			if(status == 'positive'){
-				var item = '#btn_useful'+question_srl;
-				var positive = parseInt(jQuery(item).attr('data')) + 1;
-				jQuery(item).attr('data',positive);
-				var value = '<i class="up"></i>Helpful('+positive+')';
-				jQuery(item).html(value);
-			}else if(status == 'negative'){
-				var item = '#btn_useless'+question_srl;
-				var negative = parseInt(jQuery(item).attr('data')) + 1;
-				jQuery(item).attr('data',negative);
-				var value = '<i class="down"></i>Helpless('+negative+')';
-				jQuery(item).html(value);
+	var completeVote = function(ret_obj, response_tags){
+			var voteExist = parseInt(ret_obj['voteExist']);
+
+			if(voteExist == 1){
+				alert('You have voted this question already, please don\'t vote again ');
+			}else{
+				if(status == 'positive'){
+					var item = '#btn_useful'+question_srl;
+					var positive = parseInt(jQuery(item).attr('data')) + 1;
+					jQuery(item).attr('data',positive);
+					var value = '<i class="up"></i>Helpful('+positive+')';
+					jQuery(item).html(value);
+				}else if(status == 'negative'){
+					var item = '#btn_useless'+question_srl;
+					var negative = parseInt(jQuery(item).attr('data')) + 1;
+					jQuery(item).attr('data',negative);
+					var value = '<i class="down"></i>Helpless('+negative+')';
+					jQuery(item).html(value);
+				}
+				alert('Thank you for your vote!');
 			}
-			alert('Thank you for your vote!');
 	 };
-	var response_tags = new Array('error','message','page','mid');
+	var response_tags = new Array('error','message','page','mid','voteExist');
 	exec_xml('faq', 'procFaqVote', params, completeVote, response_tags);
 }
 

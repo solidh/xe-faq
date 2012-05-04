@@ -513,6 +513,18 @@ class faqController extends faq {
 		$positive = $question->get('positive');
 		$negative = $question->get('negative');
 
+		$voteExist = 1;
+		$ipaddress = $_SERVER['REMOTE_ADDR'];
+		$votesArr = explode(',',$question->get('votes'));
+		if(!in_array($ipaddress,$votesArr)){ 
+			$votesArr[] = $ipaddress;
+			$voteExist = 0;
+		}else{
+			$this->add('voteExist', $voteExist);
+			return $voteExist;
+		}
+		$args->votes = implode(',',$votesArr);
+
 		if($args->status == 'positive'){
 			$args->positive = intval($positive)+1;
 			$output = executeQuery('faq.updateQuestionPositive', $args);
