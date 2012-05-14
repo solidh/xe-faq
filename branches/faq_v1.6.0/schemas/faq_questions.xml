@@ -11,5 +11,5 @@
 	<column name="update_order" type="number" size="11" notnull="notnull" index="idx_update_order" />
 	<column name="positive" type="number" notnull="notnull" default="0"/>
 	<column name="negative" type="number" notnull="notnull" default="0"/>
-	<column name="votes" type="varchar" />
+	<column name="votes" type="varchar" size="250" />
 </table>
