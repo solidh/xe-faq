@@ -74,7 +74,7 @@
 			$obj->module_srl = $module_srl;
 			$oFaqModel = &getModel('faq');
 			$oQuestionList = $oFaqModel->getQuestionList($obj);
-			$oCategoryList = $oFaqModel->getCategoryList($obj->module_srl);
+			$oCategoryList = $oFaqModel->getAllCategoryList($obj->module_srl,0);
 
 			// delete module's question
 			$oFaqController = &getController('faq');
