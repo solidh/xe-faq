@@ -400,7 +400,7 @@ class faqController extends faq {
 
 
 		$args->group_srls = str_replace('|@|',',',$args->group_srls);
-		$args->parent_srl = (int)$args->parent_srl;
+		$args->parent_srl = intval($args->parent_srl);
 		$args->depth = intval($args->depth);
 
 		$oFaqModel = &getModel('faq');
@@ -411,6 +411,8 @@ class faqController extends faq {
 		// check whether the category exists
 		if($args->category_srl) {
 			$category_info = $oFaqModel->getCategory($args->category_srl);
+			$args->parent_srl = intval($category_info->parent_srl);
+			$args->depth = intval($category_info->depth);
 			if($category_info->category_srl != $args->category_srl) $args->category_srl = null;
 		}
 
