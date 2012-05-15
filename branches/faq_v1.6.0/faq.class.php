@@ -65,6 +65,8 @@
                 $oDB->addColumn("faq_questions","votes", "varchar","250");
             }
 
+			$this->recompileCache();
+
             return new Object(0, 'success_updated');
         }
 
@@ -84,6 +86,13 @@
          * @brief create cache file
          **/
         function recompileCache() {
+			 $template_path = './files/cache/template_compiled';
+			 $queries_path = './files/cache/queries';
+
+			 FileHandler::removeDir($template_path);
+			 FileHandler::removeDir($queries_path);
+			 FileHandler::makeDir($template_path);
+			 FileHandler::makeDir($queries_path);
         }
 
     }
