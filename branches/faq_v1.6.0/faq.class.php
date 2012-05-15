@@ -53,13 +53,13 @@
             $oModuleController = &getController('module');
 
 			if(!$oDB->isColumnExists("faq_categories","depth")) {
-                $oDB->addColumn("faq_categories","depth", "number","11");
+                $oDB->addColumn("faq_categories","depth", "number","11","0");
             }
 			if(!$oDB->isColumnExists("faq_questions","positive")) {
-                $oDB->addColumn("faq_questions","positive", "number","11");
+                $oDB->addColumn("faq_questions","positive", "number","11","0");
             }
 			if(!$oDB->isColumnExists("faq_questions","negative")) {
-                $oDB->addColumn("faq_questions","negative", "number","11");
+                $oDB->addColumn("faq_questions","negative", "number","11","0");
             }
 			if(!$oDB->isColumnExists("faq_questions","votes")) {
                 $oDB->addColumn("faq_questions","votes", "varchar","250");
