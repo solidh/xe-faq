@@ -60,8 +60,8 @@
                     <a href="{getUrl('act','dispFaqDelete','question_srl',$question->question_srl)}" class="btn"><span>{$lang->cmd_delete}</span></a>
                 </p>
 				<div class="vote_btn" cond="$module_info->allow_vote == 'Y'">
-					<a href="###" class="vote t-up" id="btn_useful{$question->question_srl}" data="{$question->get('positive')}" onclick="voteFaq({$question->question_srl},'positive')" ><i class="up"></i>Helpful({$question->get('positive')})</a>
-					<a href="###" class="vote t-down"  id="btn_useless{$question->question_srl}" data="{$question->get('negative')}" onclick="voteFaq({$question->question_srl},'negative')" ><i class="down"></i>Helpless({$question->get('negative')})</a>
+					<a href="#" class="vote t-up" id="btn_useful{$question->question_srl}" data="{$question->get('positive')}" onclick="voteFaq({$question->question_srl},'positive'); return false;" ><i class="up"></i>{$lang->helpful}({$question->get('positive')})</a>
+					<a href="#" class="vote t-down"  id="btn_useless{$question->question_srl}" data="{$question->get('negative')}" onclick="voteFaq({$question->question_srl},'negative'); return false;" ><i class="down"></i>{$lang->helpless}({$question->get('negative')})</a>
 				</div>
             </div>  
         </li>
@@ -69,11 +69,17 @@
 </ul>
 
 </div>
-
+{@ 
+	$vote_success = $lang->vote_success;
+	$vote_failed = $lang->vote_failed;
+}
 <script type="text/javascript">
 	var mid = '{$mid}';
 	var category = '{$category}';
+	window.vote_success = '{$vote_success}';
+	window.vote_failed = '{$vote_failed}';
 
+  
 	jQuery(function($){
 		$('select#sort_option').change(function(){
 			var opt = $(this).find('option:selected').attr('value');

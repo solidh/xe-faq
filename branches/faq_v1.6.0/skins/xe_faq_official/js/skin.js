@@ -35,7 +35,6 @@ jQuery(function($){
 });
 
 function voteFaq(question_srl,status){
-
 	var params = new Array();
 	params['question_srl'] = question_srl;
 	params['status'] = status;
@@ -44,7 +43,7 @@ function voteFaq(question_srl,status){
 			var voteExist = parseInt(ret_obj['voteExist']);
 
 			if(voteExist == 1){
-				alert('You have voted this question already, please don\'t vote again ');
+				alert(vote_failed);
 			}else{
 				if(status == 'positive'){
 					var item = '#btn_useful'+question_srl;
@@ -59,7 +58,7 @@ function voteFaq(question_srl,status){
 					var value = '<i class="down"></i>Helpless('+negative+')';
 					jQuery(item).html(value);
 				}
-				alert('Thank you for your vote!');
+				alert(vote_success);
 			}
 	 };
 	var response_tags = new Array('error','message','page','mid','voteExist');
