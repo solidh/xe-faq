@@ -41,6 +41,9 @@
 			if(!$oDB->isColumnExists("faq_questions","negative")) return true;
 			if(!$oDB->isColumnExists("faq_questions","votes")) return true;
 
+			// 2012. 09. 11 when add new menu in sitemap, custom menu add
+			if(!$oModuleModel->getTrigger('menu.getModuleListInSitemap', 'faq', 'model', 'triggerModuleListInSitemap', 'after')) return true;
+
             return false;
         }
 
@@ -64,6 +67,10 @@
 			if(!$oDB->isColumnExists("faq_questions","votes")) {
                 $oDB->addColumn("faq_questions","votes", "varchar","250");
             }
+
+			// 2012. 09. 11 when add new menu in sitemap, custom menu add
+			if(!$oModuleModel->getTrigger('menu.getModuleListInSitemap', 'faq', 'model', 'triggerModuleListInSitemap', 'after'))
+				$oModuleController->insertTrigger('menu.getModuleListInSitemap', 'faq', 'model', 'triggerModuleListInSitemap', 'after');
 
 			$this->recompileCache();
 
