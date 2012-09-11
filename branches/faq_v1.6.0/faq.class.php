@@ -21,10 +21,12 @@
         /**
          * @brief module installation
          **/
-        function moduleInstall() {
+		function moduleInstall()
+		{
             // action forward get module controller and model
             $oModuleController = &getController('module');
             $oModuleModel = &getModel('module');
+			$oModuleController->insertTrigger('member.getModuleListInSitemap', 'kin', 'model', 'triggerModuleListInSitemap', 'after');
 
             return new Object();
         }
