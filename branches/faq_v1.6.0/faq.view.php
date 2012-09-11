@@ -18,11 +18,11 @@
 
            /**
              * get skin template_path
-             * if it is not found, default skin is xe_faq
+             * if it is not found, default skin is xe_faq_official
              **/
             $template_path = sprintf("%sskins/%s/",$this->module_path, $this->module_info->skin);
             if(!is_dir($template_path)||!$this->module_info->skin) {
-                $this->module_info->skin = 'xe_faq';
+                $this->module_info->skin = 'xe_faq_official';
                 $template_path = sprintf("%sskins/%s/",$this->module_path, $this->module_info->skin);
             }
             $this->setTemplatePath($template_path);
