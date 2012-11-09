@@ -11,6 +11,7 @@ class faqController extends faq {
 	 * @brief initialization
 	 **/
 	function init() {
+		if(!$this->grant->manager) return $this->stop("msg_not_permitted");
 	}
 
 	/**

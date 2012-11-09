@@ -44,6 +44,7 @@
          * @brief display faq content
          **/
         function dispFaqContent() {
+            if(!$this->grant->access) return $this->setTemplateFile('input_password_form');
 			//get faq categories
             $this->dispFaqCategoryList();
 
@@ -77,6 +78,7 @@
          * @brief display faq content view 
          **/
         function dispFaqContentView(){
+            if(!$this->grant->access) return $this->setTemplateFile('input_password_form');
             // get question_srl
             $question_srl = Context::get('question_srl');
 
@@ -122,6 +124,7 @@
          * @brief display faq content list
          **/
         function dispFaqContentList(){
+            if(!$this->grant->access) return $this->setTemplateFile('input_password_form');
 
             // if you dot have permission, re-initialize the module variables
 			/*if(!$this->grant->list) {
@@ -205,7 +208,7 @@
 			// only admin user can write faq
 			if(!Context::get('is_logged'))  return $this->setTemplateFile('input_password_form');
             $logged_info = Context::get('logged_info');
-            if($logged_info->is_admin != 'Y') return $this->setTemplateFile('input_password_form');
+            if(!$this->grant->manager) return $this->setTemplateFile('input_password_form');
 
 			$oFaqModel = &getModel('faq');
 
@@ -273,7 +276,7 @@
 			// only admin user can write faq
 			if(!Context::get('is_logged'))  return $this->setTemplateFile('input_password_form');
             $logged_info = Context::get('logged_info');
-            if($logged_info->is_admin != 'Y') return $this->setTemplateFile('input_password_form');
+            if(!$this->grant->manager) return $this->setTemplateFile('input_password_form');
 
             // get question_srl
             $question_srl = Context::get('question_srl');

@@ -35,13 +35,21 @@
         }
 
         function isEditable() {
-
-			if(!Context::get('is_logged')) return false;
+			if($this->isGranted()) return true;
+			else return false;
+        }
+        function isGranted() {
+            if(!Context::get('is_logged')) return false;
             $logged_info = Context::get('logged_info');
             if($logged_info->is_admin == 'Y') return true;
 
+			$oModuleModel = &getModel('module');
+			$grant = $oModuleModel->getGrant($oModuleModel->getModuleInfoByModuleSrl($this->get('module_srl')), $logged_info);
+			if($grant->manager) return true;
+            if($this->get('member_srl') && $this->get('member_srl') == $logged_info->member_srl) return true;
             return false;
         }
+
 
         function getQuestion($cut_size = 0, $tail='...') {
             if(!$this->question_srl) return;

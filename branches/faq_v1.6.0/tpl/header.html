@@ -1,22 +1,22 @@
 <load target="js/faq_admin.js" />
 <load target="css/layout_admin.css" />
 
-<h3 class="xeAdmin"><span class="gray">{$lang->faq_management}</span></h3>
+<h1 class="h1">{$lang->faq_management}</h3>
 
-<div class="infoText">{nl2br($lang->about_faq)}</div>
+<p>{nl2br($lang->about_faq)}</p>
 
+<h2 cond="$module_info->mid" class="h2">{$module_info->mid} <span cond="$module_info->is_default=='Y'" class="bracket">({$lang->is_default})</span> <span class="vr">|</span> <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" onclick="window.open(this.href); return false;" class="view">View</a></h2>
 
-<div cond="$module_info" class="header4">
-    <h4 cond="$module_info->mid" class="xeAdmin">{$module_info->mid} <span cond="$module_info->is_default=='Y'" class="bracket">({$lang->is_default})</span> <span class="vr">|</span> <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" onclick="window.open(this.href); return false;" class="view">View</a></h4>
+<div class="cnb">
+	<ul>
+		<li cond="$module=='admin'" class="active"|cond="$act=='dispFaqAdminContent'"><a href="{getUrl('act','dispFaqAdminContent','module_srl','')}">{$lang->cmd_faq_list}</a></li>
+		<li><a href="{getUrl('act','')}">{$lang->cmd_list}</a></li>
+		<li class="active"|cond="$act=='dispFaqAdminFaqInfo'||$act=='dispFaqAdminInsertFaq'"><a href="{getUrl('act','dispFaqAdminFaqInfo')}"><!--@if($module_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_faq}<!--@end--></a></li>
 
-    <ul class="localNavigation">
-        <li cond="$module=='admin'" class="on"|cond="$act=='dispFaqAdminContent'"><a href="{getUrl('act','dispFaqAdminContent','module_srl','')}">{$lang->cmd_faq_list}</a></li>
-        <li cond="$module!='admin'"><a href="{getUrl('act','')}">{$lang->cmd_back}</a></li>
-        <li class="on"|cond="$act=='dispFaqAdminFaqInfo'||$act=='dispFaqAdminInsertFaq'"><a href="{getUrl('act','dispFaqAdminFaqInfo')}"><!--@if($module_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_faq}<!--@end--></a></li>
-
-        <li cond="$module_srl" class="on"|cond="$act=='dispFaqAdminCategoryInfo'"><a href="{getUrl('act','dispFaqAdminCategoryInfo')}">{$lang->cmd_manage_category}</a></li>
-        <li cond="$module_srl" class="on"|cond="$act=='dispFaqAdminFaqAdditionSetup'"><a href="{getUrl('act','dispFaqAdminFaqAdditionSetup')}">{$lang->cmd_addition_setup}</a></li>
-    </ul>
+		<block cond="$module_srl">
+		<li class="active"|cond="$act=='dispFaqAdminCategoryInfo'"><a href="{getUrl('act','dispFaqAdminCategoryInfo')}">{$lang->cmd_manage_category}</a></li>
+		<li class="active"|cond="$act=='dispFaqAdminFaqAdditionSetup'"><a href="{getUrl('act','dispFaqAdminFaqAdditionSetup')}">{$lang->cmd_addition_setup}</a></li>
+		<li class="active"|cond="$act=='dispFaqAdminGrantInfo'"><a href="{getUrl('act','dispFaqAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
+		</block>
+	</ul>
 </div>
-
-

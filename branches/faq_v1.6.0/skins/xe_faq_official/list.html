@@ -29,7 +29,7 @@
 	<a href="{getUrl('page',$page_navigation->last_page,'question_srl','','division',$division,'last_division',$last_division)}" class="nextEnd">{$lang->last_page}</a>
 </div>
 
-<div cond="$logged_info->member_srl && $logged_info->is_admin == 'Y'" class="buttonRight">
+<div cond="$grant->manager" class="buttonRight">
      <a href="{getUrl('act','dispFaqWrite','question_srl','')}" class="btn green strong"><span>{$lang->cmd_write}</span></a>
 </div>
 

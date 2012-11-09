@@ -20,6 +20,7 @@
 		<action name="dispFaqAdminFaqInfo" type="view" standalone="true" />
 		<action name="dispFaqAdminCategoryInfo" type="view" />
         <action name="dispFaqAdminFaqAdditionSetup" type="view" standalone="true" />
+		<action name="dispFaqAdminGrantInfo" type="view" standalone="true" />
         <action name="dispFaqWrite" type="view" />
         <action name="dispFaqDelete" type="view" />
 
