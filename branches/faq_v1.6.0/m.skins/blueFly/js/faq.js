@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function($){
 
 var btn_srch = $('.btn_srch');
 var srch = $('form.srch');
